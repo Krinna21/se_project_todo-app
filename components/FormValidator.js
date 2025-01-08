@@ -46,18 +46,17 @@ class FormValidator {
       this._submitButtonSelector
     );
 
-    this._toggleButtonState(buttonElement); // Initialize button state
+    this._toggleButtonState(buttonElement);
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(buttonElement); // Update button state
+        this._toggleButtonState(buttonElement);
       });
     });
   }
 
   resetValidation() {
-    // Clear all input errors and reset styles
     this._inputList.forEach((inputElement) => {
       inputElement.classList.remove(this._inputErrorClass);
       const errorElement = this._formEl.querySelector(
@@ -65,18 +64,18 @@ class FormValidator {
       );
       errorElement.textContent = "";
       errorElement.classList.remove(this._errorClass);
-      inputElement.value = ""; // Optional: Reset input values if desired
+      inputElement.value = "";
     });
 
     const buttonElement = this._formEl.querySelector(
       this._submitButtonSelector
     );
-    this._toggleButtonState(buttonElement); // Reset button state
+    this._toggleButtonState(buttonElement);
   }
 
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
-      evt.preventDefault(); // Prevent default form submission behavior
+      evt.preventDefault();
     });
     this._setEventListeners();
   }
