@@ -64,18 +64,28 @@ class FormValidator {
       );
       errorElement.textContent = "";
       errorElement.classList.remove(this._errorClass);
-      inputElement.value = "";
+      inputElement.value = ""; // Reset value
     });
 
     const buttonElement = this._formEl.querySelector(
       this._submitButtonSelector
     );
     this._toggleButtonState(buttonElement);
+
+    // Disable submit button after successful submission
+    buttonElement.disabled = true;
+    buttonElement.classList.add(this._inactiveButtonClass);
   }
 
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
+
+      // Check if the form is valid and submit
+      if (this._formEl.checkValidity()) {
+        this.resetValidation(); // Reset form after successful submission
+        // Update your todo counter here if needed
+      }
     });
     this._setEventListeners();
   }
