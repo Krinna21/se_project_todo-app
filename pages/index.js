@@ -10,8 +10,12 @@ const addTodoButton = document.querySelector(".button_action_add");
 const todosList = document.querySelector(".todos__list");
 const counterText = document.querySelector(".counter__text");
 
+const handleCheck = (checked) => {
+  todoCounter.updateCompleted(checked);
+};
+
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
+  const todo = new Todo(data, "#todo-template", handleCheck);
   return todo.getView();
 };
 
