@@ -71,10 +71,6 @@ class FormValidator {
       this._submitButtonSelector
     );
     this._toggleButtonState(buttonElement);
-
-    // Disable submit button after successful submission
-    buttonElement.disabled = true;
-    buttonElement.classList.add(this._inactiveButtonClass);
   }
 
   enableValidation() {
