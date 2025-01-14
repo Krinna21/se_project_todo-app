@@ -14,8 +14,12 @@ const handleCheck = (checked) => {
   todoCounter.updateCompleted(checked);
 };
 
+const handleDelete = () => {
+  todoCounter.updateTotal(false);
+};
+
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template", handleCheck);
+  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   return todo.getView();
 };
 

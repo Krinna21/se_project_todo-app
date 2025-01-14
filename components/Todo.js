@@ -1,14 +1,16 @@
 class Todo {
-  constructor(data, selector, handleCheck) {
+  constructor(data, selector, handleCheck, handleDelete) {
     this._data = data;
     this._templateElement = document.querySelector(selector);
     this._handleCheck = handleCheck; // Properly assign the passed function
+    this._handleDelete = handleDelete; // Assign the delete callback
   }
 
   _setEventListeners() {
     // Handle delete button click
     this._todoDeleteBtn.addEventListener("click", () => {
-      this._todoElement.remove();
+      this._todoElement.remove(); // Remove the element from DOM
+      this._handleDelete(); // Call the delete handler
     });
 
     // Handle checkbox state change
