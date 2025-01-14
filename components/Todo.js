@@ -10,7 +10,7 @@ class Todo {
     // Handle delete button click
     this._todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove(); // Remove the element from DOM
-      this._handleDelete(); // Call the delete handler
+      this._handleDelete(this._data.completed); // Pass completed status to the delete handler
     });
 
     // Handle checkbox state change

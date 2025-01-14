@@ -14,7 +14,10 @@ const handleCheck = (checked) => {
   todoCounter.updateCompleted(checked);
 };
 
-const handleDelete = () => {
+const handleDelete = (completed) => {
+  if (completed) {
+    todoCounter.updateCompleted(false);
+  }
   todoCounter.updateTotal(false);
 };
 
